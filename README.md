@@ -1,2 +1,2 @@
-# Project-1
+# Project-1 Trivia Game 
 The Game of Myths
