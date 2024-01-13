@@ -27,9 +27,9 @@ const easyQuestions = [
     options: ["Hades", "Anubis", 'Hela', 'Cerberus'],
     answer: "Hades"},
 
-    {question: "Which son of Zeus who killed Medusa?",
+    {question: "Which son of Zeus killed Medusa?",
     options: ["Perseus", "Hercules", 'Athena', 'Artemis'],
-    answer: "Hercules"},
+    answer: "Perseus"},
 
     {question: "Who is the wife of Zeus?",
     options: ["Persephone", "Aphrodite", 'Hera', 'Medusa'],
@@ -62,9 +62,16 @@ const easyQuestions = [
 
 let currentQuestionIndex = 0;
 let currentQuestion = easyQuestions[currentQuestionIndex];
+correctAnswers = 0;
 
 function startGame() {
     document.getElementById("startBtn").style.display = "none";
+
+    document.getElementById("question").style.display = "block"
+    document.getElementById("options").style.display = "block"
+    document.getElementById("nextBtn").style.display = "block"
+
+    loadQuestion();
 }
 
 document.getElementById("nextBtn").addEventListener("click", nextQuestion);
@@ -103,13 +110,28 @@ function nextQuestion() {
         currentQuestion = easyQuestions[currentQuestionIndex];
         loadQuestion();
     } else {
-        alert("Congratulations! You've completed the trivia game.");
+        showRanking();
        
     }
 }
 
 
-loadQuestion();
+function showRanking(){
+    document.getElementById("question").style.display = "none";
+    document.getElementById("options").style.display = "none";
+    document.getElementById("nextBtn").style.display = "none";
+
+    const rankingElement = document.getElementById("ranking");
+    if (correct === easyQuestions.length) {
+        rankingElement.textContent = "Perfect! You're a Greek";
+    } else if (correctAnswers >= easyQuestions.length / 2) {
+        rankingElement.textContent = "Good Job! You're a Demi-God";
+    } else {
+        rankingElement.textContent = "Keeping trying mortal";
+    }
+    rankingElement.style.display = "block";
+
+}
 
 
 // const mythQuestions = {
@@ -506,8 +528,8 @@ loadQuestion();
 // // });
 
 // function startGame(){
-//     document.getElementById('difficultySelection').style.display = 'none';
-//     document.getElementById('questionContainer').style.display = 'block';
+//     // document.getElementById('difficultySelection').style.display = 'none';
+//     // document.getElementById('questionContainer').style.display = 'block';
 //     currentQuestionIndex = Math.floor(Math.random() * chosenQuestions.length);
 //     randomAnswers = Math
 //     displayQuestion();
