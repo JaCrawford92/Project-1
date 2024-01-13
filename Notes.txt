@@ -53,6 +53,38 @@ Whenever he bent down to get a drink, the water receded before he got any? Tanta
 
 1. Need to get the inital start button to work
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Game of Myths</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <img src="zeus.png" alt="Olympus">
+    <div class="container">
+        <h1>A Game of Myths</h1>
+        <div>Are you ready to test your Knowledge?</div>
+        <button id="startBtn">Start Game</button>
+        <div id="difficultySelection" style="display: none">
+            <h2>Select Difficulty:</h2>
+            <button id="easyBtn">Easy</button>
+            <button id="mediumBtn">Medium</button>
+            <button id="hardBtn">Hard</button>
+            <button id="expertBtn">Expert</button>  
+        </div>
+        <div id="questionContainer" style="display: none;">
+            <h2>Question:</h2>
+            <p id="question"></p>
+            <div id="options"></div>
+            <button id="submitButton">Submit</button>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
+
 
 
 
