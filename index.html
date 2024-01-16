@@ -7,18 +7,26 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-
+    
 <h1>A Game of Myths</h1>
+<!-- <img src="zeus Large.png" alt="zeus" class="center"/> -->
+<nav>
 <div>
     <button id="startBtn" onclick="startGame()">Start Game</button>
-    <button id="startOverBtn" onclick="startOver()">Start Game</button>
+    <div>
+        <button id="easyBtn" onclick="startGame('easy')">Easy</button>
+        <button id="mediumBtn"onclick="startGame('medium')">Medium</button>
+    </div>
 
-</div>
+
 <p id="question"></p>
 <div id="options"></div>
 <button id="nextBtn">Next Question</button>
+<br>
+<button id="startOverBtn" onclick="startOver()">Start Over</button>
 <p id="ranking"></p>
-
+</div>
+</nav>
 <script src="app.js"></script>
 </body>
 </html>

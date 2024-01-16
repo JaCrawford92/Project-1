@@ -61,20 +61,44 @@ const easyQuestions = [
 ]
 
 let currentQuestionIndex = 0;
-let currentQuestion = easyQuestions[currentQuestionIndex];
-correctAnswers = 0;
+let currentQuestion = [currentQuestionIndex];
+let correctAnswers = 0;
 
-function startGame() {
+
+// START GAME FUNCTION //
+function startGame(difficulty) {
     document.getElementById("startBtn").style.display = "none";
+    document.getElementById("startOverBtn").style.display = "none";
 
     document.getElementById("question").style.display = "block"
     document.getElementById("options").style.display = "block"
     document.getElementById("nextBtn").style.display = "block"
 
-    loadQuestion();
+    let questions;
+    if (difficulty === "easy"){
+        questions = easyQuestions;
+    } else if (difficulty === "medium") {
+        questions = mediumQuestions;
+    }
+
+    loadQuestion(questions);
+
+    const easyButton = document.getElementById('easyBtn');
+    const mediumButton = document.getElementById('mediaumBtn');
+    
+    easyButton.addEventListener("click", function() {
+        startGame('easy');
+    });
+    mediumButton.addEventListener("click", function(){
+        startGame('medium');
+    });
+
+    console.log("Game started!");
 }
 
 document.getElementById("nextBtn").addEventListener("click", nextQuestion);
+
+
 
 function loadQuestion() {
     const questionElement = document.getElementById("question");
@@ -96,9 +120,9 @@ function selectAnswer(optionIndex) {
     const correctAnswer = currentQuestion.answer;
 
     if (selectedOption === correctAnswer) {
-        alert("Correct! Well done!");
+        alert("Correct! Well done mortal!");
     } else {
-        alert(`Wrong! The correct answer is: ${correctAnswer}`);
+        alert(`Wrong mortal! The correct answer is: ${correctAnswer}`);
     }
 
     nextQuestion();
@@ -109,9 +133,11 @@ function nextQuestion() {
     if (currentQuestionIndex < easyQuestions.length) {
         currentQuestion = easyQuestions[currentQuestionIndex];
         loadQuestion();
+    } else if (currentQuestionIndex < mediumQuestions.length){
+        currentQuestion = mediumQuestions[currentQuestionIndex]
+        loadQuestion();  
     } else {
         showRanking();
-       
     }
 }
 
@@ -122,7 +148,7 @@ function showRanking(){
     document.getElementById("nextBtn").style.display = "none";
 
     const rankingElement = document.getElementById("ranking");
-    if (correct === easyQuestions.length) {
+    if (correctAnswers === easyQuestions.length) {
         rankingElement.textContent = "Perfect! You're a Greek";
     } else if (correctAnswers >= easyQuestions.length / 2) {
         rankingElement.textContent = "Good Job! You're a Demi-God";
@@ -131,6 +157,21 @@ function showRanking(){
     }
     rankingElement.style.display = "block";
 
+    document.getElementById("startOverBtn").style.display = "block";
+}
+
+function startOver() {
+    currentQuestionIndex = 0;
+    currentQuestion = [currentQuestionIndex];
+    correctAnswers = 0;
+    document.getElementById("ranking").style.display = "none"
+    document.getElementById("startOverBtn").style.display = "none"
+
+    document.getElementById("question").style.display = "block"
+    document.getElementById("options").style.display = "block"
+    document.getElementById("nextBtn").style.display = "block"
+
+    loadQuestion();
 }
 
 
@@ -198,59 +239,59 @@ function showRanking(){
 //     ]
 // };
 
-// const mediumQuestions = [
-//     {question: "If you cut off 1 head, 2 grow back. What am I?",
-//     options: ['Chimera', 'Hydra', 'Chiron', 'Cerberus'],
-//     answer: "Hydra"},
+const mediumQuestions = [
+    {question: "If you cut off 1 head, 2 grow back. What am I?",
+    options: ['Chimera', 'Hydra', 'Chiron', 'Cerberus'],
+    answer: "Hydra"},
 
-//     {question: " Who is the father of Zeus, Hades and Poseidon?",
-//     options: ['Uranus', 'Cronos', 'Rhea', 'Titan'],
-//     answer: "Cronos"},
+    {question: " Who is the father of Zeus, Hades and Poseidon?",
+    options: ['Uranus', 'Cronos', 'Rhea', 'Titan'],
+    answer: "Cronos"},
 
-//     {question: "Who is Artemis twin?",
-//     options: ['Hermes', 'Athena', 'Apollo', 'Aphrodite'],
-//     answer: "Apollo"},
+    {question: "Who is Artemis twin?",
+    options: ['Hermes', 'Athena', 'Apollo', 'Aphrodite'],
+    answer: "Apollo"},
 
-//     {question: "How many labors did Hercules have to take? 12",
-//     options: ['15', '11', '12', '13'],
-//     answer: "12"},
+    {question: "How many labors did Hercules have to take? 12",
+    options: ['15', '11', '12', '13'],
+    answer: "12"},
 
-//     {question: "What was left in Pandora’s box after she released misery and evil?",
-//     options: ['Love', 'Miracle', 'Hope', 'Care'],
-//     answer: "Hope"},
+    {question: "What was left in Pandora’s box after she released misery and evil?",
+    options: ['Love', 'Miracle', 'Hope', 'Care'],
+    answer: "Hope"},
 
-//     {question: " Who is the ruler of all Monsters?",
-//     options: ['Chimera', 'Echidna', 'Chiron', 'Lilith'],
-//     answer: "Echidna"},
+    {question: " Who is the ruler of all Monsters?",
+    options: ['Chimera', 'Echidna', 'Chiron', 'Lilith'],
+    answer: "Echidna"},
 
-//     {question: "The Parthenon was built as a temple for whom?",
-//     options: ['Ares', 'Athena', 'Artemis', 'Apollo'],
-//     answer: "Athena"},
+    {question: "The Parthenon was built as a temple for whom?",
+    options: ['Ares', 'Athena', 'Artemis', 'Apollo'],
+    answer: "Athena"},
 
-//     {question: "Who was the Ancient Greek Goddess of the Dawn?",
-//     options: ['Helios', 'Nyx', 'Eos', 'Eros'],
-//     answer: "Eos"},
+    {question: "Who was the Ancient Greek Goddess of the Dawn?",
+    options: ['Helios', 'Nyx', 'Eos', 'Eros'],
+    answer: "Eos"},
 
-//     {question: "Eros is the god of what?",
-//     options: ['Love & Desire', 'Love & Fertility', 'Love & Hate', 'Love & Chaos'],
-//     answer: "Love & Desire"},
+    {question: "Eros is the god of what?",
+    options: ['Love & Desire', 'Love & Fertility', 'Love & Hate', 'Love & Chaos'],
+    answer: "Love & Desire"},
 
-//     {question: "Persephone is the goddess of what?",
-//     options: ['Spring', 'Summer', 'Winter', 'Fall'],
-//     answer: "Spring"},
+    {question: "Persephone is the goddess of what?",
+    options: ['Spring', 'Summer', 'Winter', 'Fall'],
+    answer: "Spring"},
 
-//     {question: "How many Titans were there?",
-//     options: ['15', '11', '12', '13'],
-//     answer: "Hydra"},
+    {question: "How many Titans were there?",
+    options: ['15', '11', '12', '13'],
+    answer: "Hydra"},
 
-//     {question: "Who killed their family in a fit of maddness?",
-//     options: ['Hercules', 'Zeus', 'Troy', 'Helen'],
-//     answer: "Hercules"},
+    {question: "Who killed their family in a fit of maddness?",
+    options: ['Hercules', 'Zeus', 'Troy', 'Helen'],
+    answer: "Hercules"},
 
-//     {question: "Who's the mother of Zeus, Hades, Poseidon?",
-//     options: ['Gaia', 'Rhea', 'Oceanus', 'Mnemosyne'],
-//     answer: "Rhea"}
-// ];
+    {question: "Who's the mother of Zeus, Hades, Poseidon?",
+    options: ['Gaia', 'Rhea', 'Oceanus', 'Mnemosyne'],
+    answer: "Rhea"}
+];
 
 // const hardQuestions = [
 //     {question: "The Golden Apple of Discord incited what war?",

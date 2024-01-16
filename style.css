@@ -1,16 +1,43 @@
+body {
+    background-color: yellow;
+    font-family: 'Satisfy', cursive;
+}
+
 h1 {
     color: crimson;
     text-align: center;
+
 }
 
 div {
     text-align: center;
+    border: 15px solid yellow;
 }
 
 p {
     text-align: center;
 }
 
-#nextBtn {
-    text-align: center;
+#startBtn {
+    font-family: 'Satisfy', cursive;
+    
 }
+
+#nextBtn {
+    position: relative;
+    font-family: 'Satisfy', cursive;
+}
+
+#startOverBtn {
+    font-family: 'Satisfy', cursive;
+    position: relative;
+}
+
+img {
+    display: flexbox;
+    border-radius: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    width: 50%;
+}
+
