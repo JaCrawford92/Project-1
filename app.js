@@ -60,185 +60,6 @@ const easyQuestions = [
     answer: "Aphrodite"},
 ]
 
-let currentQuestionIndex = 0;
-let currentQuestion = [currentQuestionIndex];
-let correctAnswers = 0;
-
-
-// START GAME FUNCTION //
-function startGame(difficulty) {
-    document.getElementById("startBtn").style.display = "none";
-    document.getElementById("startOverBtn").style.display = "none";
-
-    document.getElementById("question").style.display = "block"
-    document.getElementById("options").style.display = "block"
-    document.getElementById("nextBtn").style.display = "block"
-
-    let questions;
-    if (difficulty === "easy"){
-        questions = easyQuestions;
-    } else if (difficulty === "medium") {
-        questions = mediumQuestions;
-    }
-
-    loadQuestion(questions);
-
-    const easyButton = document.getElementById('easyBtn');
-    const mediumButton = document.getElementById('mediaumBtn');
-    
-    easyButton.addEventListener("click", function() {
-        startGame('easy');
-    });
-    mediumButton.addEventListener("click", function(){
-        startGame('medium');
-    });
-
-    console.log("Game started!");
-}
-
-document.getElementById("nextBtn").addEventListener("click", nextQuestion);
-
-
-
-function loadQuestion() {
-    const questionElement = document.getElementById("question");
-    const optionsElement = document.getElementById("options");
-
-    questionElement.textContent = currentQuestion.question;
-    optionsElement.innerHTML = "";
-
-    currentQuestion.options.forEach((option, index) => {
-        const button = document.createElement("button");
-        button.textContent = option;
-        button.onclick = () => selectAnswer(index);
-        optionsElement.appendChild(button);
-    });
-}
-
-function selectAnswer(optionIndex) {
-    const selectedOption = currentQuestion.options[optionIndex];
-    const correctAnswer = currentQuestion.answer;
-
-    if (selectedOption === correctAnswer) {
-        alert("Correct! Well done mortal!");
-    } else {
-        alert(`Wrong mortal! The correct answer is: ${correctAnswer}`);
-    }
-
-    nextQuestion();
-}
-
-function nextQuestion() {
-    currentQuestionIndex++;
-    if (currentQuestionIndex < easyQuestions.length) {
-        currentQuestion = easyQuestions[currentQuestionIndex];
-        loadQuestion();
-    } else if (currentQuestionIndex < mediumQuestions.length){
-        currentQuestion = mediumQuestions[currentQuestionIndex]
-        loadQuestion();  
-    } else {
-        showRanking();
-    }
-}
-
-
-function showRanking(){
-    document.getElementById("question").style.display = "none";
-    document.getElementById("options").style.display = "none";
-    document.getElementById("nextBtn").style.display = "none";
-
-    const rankingElement = document.getElementById("ranking");
-    if (correctAnswers === easyQuestions.length) {
-        rankingElement.textContent = "Perfect! You're a Greek";
-    } else if (correctAnswers >= easyQuestions.length / 2) {
-        rankingElement.textContent = "Good Job! You're a Demi-God";
-    } else {
-        rankingElement.textContent = "Keeping trying mortal";
-    }
-    rankingElement.style.display = "block";
-
-    document.getElementById("startOverBtn").style.display = "block";
-}
-
-function startOver() {
-    currentQuestionIndex = 0;
-    currentQuestion = [currentQuestionIndex];
-    correctAnswers = 0;
-    document.getElementById("ranking").style.display = "none"
-    document.getElementById("startOverBtn").style.display = "none"
-
-    document.getElementById("question").style.display = "block"
-    document.getElementById("options").style.display = "block"
-    document.getElementById("nextBtn").style.display = "block"
-
-    loadQuestion();
-}
-
-
-// const mythQuestions = {
-//     easy: [
-//     {question: "What monster turns you to stone if you look at it?",
-//     options: ["Medusa", "Kraken", 'Mermaids', 'Chimera'],
-//     answer: "Medusa"},
-
-//     {question: "What Greek god used a lightning bolt?",
-//     options: ["Odin", 'Hades', 'Zeus', 'Thor'],
-//     answer: "Zeus"},
-
-//     {question: "What Greek god rules the Seas?",
-//     options: ["Persephone", "Hades", 'Poseidon', 'Hera'],
-//     answer: "Posidon"},
-
-//     {question: "Who is the ruler of Olympus?",
-//     options: ["Hades", "Poseidon", 'Hera', 'Zeus'],
-//     answer: "Zeus"},
-
-//     {question: "Where do the Greek gods reside?",
-//     options: ["Greece", "Olympus", 'Alantis', 'Vahalla'],
-//     answer: "Olympus"},
-
-//     {question: "Which creature in Greek mythology was half-man and half-bull?",
-//     options: ["Medusa", "Centaur", 'Mintaur', 'Pegasus'],
-//     answer: "Mintaur"},
-
-//     {question: "Who was the ancient Greek God of the Underworld and God of the Dead?",
-//     options: ["Hades", "Anubis", 'Hela', 'Cerberus'],
-//     answer: "Hades"},
-
-//     {question: "Which son of Zeus who killed Medusa?",
-//     options: ["Perseus", "Hercules", 'Athena', 'Artemis'],
-//     answer: "Hercules"},
-
-//     {question: "Who is the wife of Zeus?",
-//     options: ["Persephone", "Aphrodite", 'Hera', 'Medusa'],
-//     answer: "Hera"},
-
-//     {question: "In Greek mythology Medusa’s hair was made of what?",
-//     options: ["Snakes", "Worms", 'Centipedes', 'Lizards'],
-//     answer: "Snakes"},
-
-//     {question: "Monsters that lured sailors into the sea?",
-//     options: ["Mermaids", "Sirens", 'Merfolks', 'Chimera'],
-//     answer: "Sirens"},
-
-//     {question: "What is a centaur?",
-//     options: ["Half-man, Half-snake", "Half-man, Half-goat", 'Half-man, Half-horse', 'Half-man, Half-lion'],
-//     answer: "Half-man, Half-horse"},
-
-//     {question: "Icurus, flew to close to what?",
-//     options: ["Moon", "Uranus", 'Sun', 'Venus'],
-//     answer: "Sun"},
-
-//     {question: "Hercules is the son of what god?",
-//     options: ["Apollo", "Zeus", 'Hades', 'Posidon'],
-//     answer: "Zeus"},
-
-//     {question: "Who's the goddess of love?",
-//     options: ["Hera", "Artemis", 'Athena', 'Aphrodite'],
-//     answer: "Aphrodite"},
-//     ]
-// };
-
 const mediumQuestions = [
     {question: "If you cut off 1 head, 2 grow back. What am I?",
     options: ['Chimera', 'Hydra', 'Chiron', 'Cerberus'],
@@ -293,93 +114,256 @@ const mediumQuestions = [
     answer: "Rhea"}
 ];
 
-// const hardQuestions = [
-//     {question: "The Golden Apple of Discord incited what war?",
-//     options: ['Peloponnesian War', 'Persian War', 'Trojan War', 'Battles of Marathon'],
-//     answer: "Rhea"},
+const hardQuestions = [
+    {question: "The Golden Apple of Discord incited what war?",
+    options: ['Peloponnesian War', 'Persian War', 'Trojan War', 'Battles of Marathon'],
+    answer: "Rhea"},
 
-//     {question: "Who fired the arrow that hit Achilles in the heel?",
-//     options: ['Thesus', 'Troy', 'Helen', 'Paris'],
-//     answer: "Paris"},
+    {question: "Who fired the arrow that hit Achilles in the heel?",
+    options: ['Thesus', 'Troy', 'Helen', 'Paris'],
+    answer: "Paris"},
 
-//     {question: "Which legendary beauty was the daughter of Zeus and Leda?",
-//     options: ['Helen of Troy', 'Pandora', 'Circe', 'Penelope'],
-//     answer: "Helen of Troy"},
+    {question: "Which legendary beauty was the daughter of Zeus and Leda?",
+    options: ['Helen of Troy', 'Pandora', 'Circe', 'Penelope'],
+    answer: "Helen of Troy"},
 
-//     {question: "What is the name the horse riden by Achilles?",
-//     options: ['Athos', 'Xanthus', 'Arion', 'Cerberus'],
-//     answer: "Xanthus"},
+    {question: "What is the name the horse riden by Achilles?",
+    options: ['Athos', 'Xanthus', 'Arion', 'Cerberus'],
+    answer: "Xanthus"},
 
-//     {question: "Which mythical Greek hunter is associated with a constellation named after him?",
-//     options: ['Scorpius', 'Lepus', 'Arion', 'Orion'],
-//     answer: "Orion"},
+    {question: "Which mythical Greek hunter is associated with a constellation named after him?",
+    options: ['Scorpius', 'Lepus', 'Arion', 'Orion'],
+    answer: "Orion"},
 
-//     {question: "After which mythological character was the drug morphine named?",
-//     options: ['Moros', 'Methe', 'Morpheus', 'Mnemosyne'],
-//     answer: "Morpheus"},
+    {question: "After which mythological character was the drug morphine named?",
+    options: ['Moros', 'Methe', 'Morpheus', 'Mnemosyne'],
+    answer: "Morpheus"},
 
-//     {question: "What temple is dedicated to all the gods?",
-//     options: ['Pantheon', 'Paestum', 'Corinth', 'Erechtheum'],
-//     answer: "Pantheon"},
+    {question: "What temple is dedicated to all the gods?",
+    options: ['Pantheon', 'Paestum', 'Corinth', 'Erechtheum'],
+    answer: "Pantheon"},
 
-//     {question: "The War of the Titans lasted how many years?",
-//     options: ['11', '10', '12', '9'],
-//     answer: "10"},
+    {question: "The War of the Titans lasted how many years?",
+    options: ['11', '10', '12', '9'],
+    answer: "10"},
 
-//     {question: "In greek legend, who turned men into swine?",
-//     options: ['Circe', 'Cleta', 'Clio', 'Chloris'],
-//     answer: "Circe"},
+    {question: "In greek legend, who turned men into swine?",
+    options: ['Circe', 'Cleta', 'Clio', 'Chloris'],
+    answer: "Circe"},
 
-//     {question: "What was sought by Jason and the Argonauts",
-//     options: ['Pandora Box', 'The Golden Apple of Discord', 'The Golden Fleece', 'Poseidon Trident'],
-//     answer: "The Golden Fleece"},
+    {question: "What was sought by Jason and the Argonauts",
+    options: ['Pandora Box', 'The Golden Apple of Discord', 'The Golden Fleece', 'Poseidon Trident'],
+    answer: "The Golden Fleece"},
 
-//     {question: "How many Primordal gods are there?",
-//     options: ['14', '13', '12', '11'],
-//     answer: "13"}
-// ];
+    {question: "How many Primordal gods are there?",
+    options: ['14', '13', '12', '11'],
+    answer: "13"}
+];
 
-// const expertQuestions = [
-//     {question: "Who's the mother of Zeus, Hades, Posidon?",
-//     options: ['Gaia', 'Rhea', 'Oceanus', 'Mnemosyne'],
-//     answer: "Rhea"},
+const expertQuestions = [
+    {question: "Who's the mother of Zeus, Hades, Posidon?",
+    options: ['Gaia', 'Rhea', 'Oceanus', 'Mnemosyne'],
+    answer: "Rhea"},
 
-//     {question: "Who's the mother of Zeus, Hades, Posidon?",
-//     options: ['Gaia', 'Rhea', 'Oceanus', 'Mnemosyne'],
-//     answer: "Rhea"},
+    {question: "Who's the mother of Zeus, Hades, Posidon?",
+    options: ['Gaia', 'Rhea', 'Oceanus', 'Mnemosyne'],
+    answer: "Rhea"},
 
-//     {question: "Who's the mother of Zeus, Hades, Posidon?",
-//     options: ['Gaia', 'Rhea', 'Oceanus', 'Mnemosyne'],
-//     answer: "Rhea"},
+    {question: "Who's the mother of Zeus, Hades, Posidon?",
+    options: ['Gaia', 'Rhea', 'Oceanus', 'Mnemosyne'],
+    answer: "Rhea"},
 
-//     {question: "Who's the mother of Zeus, Hades, Posidon?",
-//     options: ['Gaia', 'Rhea', 'Oceanus', 'Mnemosyne'],
-//     answer: "Rhea"},
+    {question: "Who's the mother of Zeus, Hades, Posidon?",
+    options: ['Gaia', 'Rhea', 'Oceanus', 'Mnemosyne'],
+    answer: "Rhea"},
 
-//     {question: "Who's the mother of Zeus, Hades, Posidon?",
-//     options: ['Gaia', 'Rhea', 'Oceanus', 'Mnemosyne'],
-//     answer: "Rhea"},
+    {question: "Who's the mother of Zeus, Hades, Posidon?",
+    options: ['Gaia', 'Rhea', 'Oceanus', 'Mnemosyne'],
+    answer: "Rhea"},
 
-//     {question: "Who's the mother of Zeus, Hades, Posidon?",
-//     options: ['Gaia', 'Rhea', 'Oceanus', 'Mnemosyne'],
-//     answer: "Rhea"},
+    {question: "Who's the mother of Zeus, Hades, Posidon?",
+    options: ['Gaia', 'Rhea', 'Oceanus', 'Mnemosyne'],
+    answer: "Rhea"},
 
-//     {question: "Who's the mother of Zeus, Hades, Posidon?",
-//     options: ['Gaia', 'Rhea', 'Oceanus', 'Mnemosyne'],
-//     answer: "Rhea"},
+    {question: "Who's the mother of Zeus, Hades, Posidon?",
+    options: ['Gaia', 'Rhea', 'Oceanus', 'Mnemosyne'],
+    answer: "Rhea"},
 
-//     {question: "Who's the mother of Zeus, Hades, Posidon?",
-//     options: ['Gaia', 'Rhea', 'Oceanus', 'Mnemosyne'],
-//     answer: "Rhea"},
+    {question: "Who's the mother of Zeus, Hades, Posidon?",
+    options: ['Gaia', 'Rhea', 'Oceanus', 'Mnemosyne'],
+    answer: "Rhea"},
 
-//     {question: "Who's the mother of Zeus, Hades, Posidon?",
-//     options: ['Gaia', 'Rhea', 'Oceanus', 'Mnemosyne'],
-//     answer: "Rhea"},
+    {question: "Who's the mother of Zeus, Hades, Posidon?",
+    options: ['Gaia', 'Rhea', 'Oceanus', 'Mnemosyne'],
+    answer: "Rhea"},
 
-//     {question: "Who's the mother of Zeus, Hades, Posidon?",
-//     options: ['Gaia', 'Rhea', 'Oceanus', 'Mnemosyne'],
-//     answer: "Rhea"}
-// ];
+    {question: "Who's the mother of Zeus, Hades, Posidon?",
+    options: ['Gaia', 'Rhea', 'Oceanus', 'Mnemosyne'],
+    answer: "Rhea"}
+];
+
+let currentQuestionIndex = 0;
+let currentQuestion = [currentQuestionIndex];
+let correctAnswers = 0;
+
+
+// START GAME FUNCTION //
+function startGame(difficulty) {
+    document.getElementById("startBtn").style.display = "none";
+    document.getElementById("startOverBtn").style.display = "none";
+
+    document.getElementById("question").style.display = "block"
+    document.getElementById("options").style.display = "block"
+    document.getElementById("nextBtn").style.display = "block"
+
+    let questions;
+    if (difficulty === "easy"){
+        questions = easyQuestions;
+    } else if (difficulty === "medium") {
+        questions = mediumQuestions;
+    } else if (difficulty === "hard") {
+        questions = hardQuestions;
+    } else if (difficulty === "expert") {
+        questions = expertQuestions;
+    }
+
+    loadQuestion(questions);
+
+    console.log("Game started!");
+}
+
+const easyButton = document.getElementById('easyBtn');
+const mediumButton = document.getElementById('mediumBtn');
+const hardButton = document.getElementById('hardBtn');
+const expertButton = document.getElementById('expertBtn');
+    
+    easyButton.addEventListener("click", function() {
+        startGame('easy');
+        hideDiffBtn();
+    });
+    mediumButton.addEventListener("click", function(){
+        startGame('medium');
+        hideDiffBtn();
+    });
+    hardButton.addEventListener("click", function(){
+        startGame('hard');
+        hideDiffBtn();
+    });
+    expertButton.addEventListener("click", function(){
+        startGame('expert');
+        hideDiffBtn();
+    });
+
+function hideDiffBtn(){
+    easyButton.style.display = "none";
+    mediumButton.style.display = "none";
+    hardButton.style.display = "none";
+    expertButton.style.display = "none";
+}
+
+
+
+document.getElementById("nextBtn").addEventListener("click", nextQuestion);
+
+
+
+function loadQuestion(questions) {
+    const questionElement = document.getElementById("question");
+    const optionsElement = document.getElementById("options");
+
+    // let questions;
+    // if (difficulty === 'easy'){
+    //     questions = easyQuestions;
+    // } else if (difficulty === 'medium'){
+    //     questions = mediumQuestions
+    // } else if (difficulty === 'hard') {
+    //     questions = hardQuestions;
+    // } else if (difficulty === 'expert') {
+    //     questions = expertQuestions
+    // }
+    
+    questionElement.textContent = currentQuestion.question;
+    optionsElement.innerHTML = "";
+
+    if(questions) {
+        currentQuestion = questions[currentQuestionIndex];
+    }
+
+    currentQuestion.options.forEach((option, index) => {
+        const button = document.createElement("button");
+        button.textContent = option;
+        button.onclick = () => selectAnswer(index);
+        optionsElement.appendChild(button);
+    });
+}
+
+function selectAnswer(optionIndex) {
+    const selectedOption = currentQuestion.options[optionIndex];
+    const correctAnswer = currentQuestion.answer;
+
+    if (selectedOption === correctAnswer) {
+        alert("Correct! Well done mortal!");
+    } else {
+        alert(`Wrong mortal! The correct answer is: ${correctAnswer}`);
+    }
+
+    nextQuestion();
+}
+
+function nextQuestion() {
+    currentQuestionIndex++;
+    if (currentQuestionIndex === easyQuestions.length) {
+        currentQuestion = easyQuestions[currentQuestionIndex];
+        loadQuestion();
+    } else if (currentQuestionIndex === mediumQuestions.length) {
+        currentQuestion = mediumQuestions[currentQuestionIndex]
+        loadQuestion();  
+    } else if (currentQuestionIndex === hardQuestions.length) {
+        currentQuestion = hardQuestions[currentQuestionIndex]
+        loadQuestion(); 
+    } else if (currentQuestionIndex === expertQuestions.length) {
+        currentQuestion = expertQuestions[currentQuestionIndex]
+        loadQuestion();
+    } else {
+        showRanking();
+    }
+}
+
+
+function showRanking(){
+    document.getElementById("question").style.display = "none";
+    document.getElementById("options").style.display = "none";
+    document.getElementById("nextBtn").style.display = "none";
+
+    const rankingElement = document.getElementById("ranking");
+    if (correctAnswers === easyQuestions.length) {
+        rankingElement.textContent = "Perfect! You're a Greek";
+    } else if (correctAnswers >= easyQuestions.length / 2) {
+        rankingElement.textContent = "Good Job! You're a Demi-God";
+    } else {
+        rankingElement.textContent = "Keeping trying mortal";
+    }
+
+    rankingElement.style.display = "block";
+    document.getElementById("startOverBtn").style.display = "block";
+
+    showRanking();
+}
+
+function startOver() {
+    currentQuestionIndex = 0;
+    currentQuestion = [currentQuestionIndex];
+    correctAnswers = 0;
+    document.getElementById("ranking").style.display = "none"
+    document.getElementById("startOverBtn").style.display = "none"
+
+    document.getElementById("question").style.display = "block"
+    document.getElementById("options").style.display = "block"
+    document.getElementById("nextBtn").style.display = "block"
+
+    loadQuestion();
+}
+
 
 // let currentQuestionIndex = 0;
 // let currentDiffcultyLevel = "easy";
