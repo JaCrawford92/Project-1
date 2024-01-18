@@ -13,17 +13,17 @@
 <nav>
 <div>
     <button id="startBtn" onclick="startGame()">Start Game</button>
-    <div>
-        <button id="easyBtn" onclick="startGame('easy')">Easy</button>
-        <button id="mediumBtn"onclick="startGame('medium')">Medium</button>
-        <button id="hardBtn"onclick="startGame('hard')">Hard</button>
-        <button id="expertBtn"onclick="startGame('expert')">Expert</button>
+    <div id="buttonContainer">
+        <button id="easyBtn" onclick="startGame('easy')" style="display: none;">Easy</button>
+        <button id="mediumBtn"onclick="startGame('medium')" style="display: none;">Medium</button>
+        <button id="hardBtn"onclick="startGame('hard')" style="display: none;">Hard</button>
+        <button id="expertBtn"onclick="startGame('expert')" style="display: none;">Expert</button>
     </div>
 <p id="question"></p>
 <div id="options"></div>
-<button id="nextBtn">Next Question</button>
+<button id="nextBtn" style="display: none;">Next Question</button>
 <br>
-<button id="startOverBtn" onclick="startOver()">Start Over</button>
+<button id="startOverBtn" onclick="startOver()" style="display: none;">Start Over</button>
 <p id="ranking"></p>
 </div>
 </nav>

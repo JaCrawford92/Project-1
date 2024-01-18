@@ -6,6 +6,20 @@ body {
 /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
+#buttonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+}
+
+#options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+}
+
 h1 {
     color: crimson;
     text-align: center;
@@ -27,7 +41,7 @@ p {
 }
 
 #nextBtn {
-    position: relative;
+    /* position: relative; */
     font-family: 'Satisfy', cursive;
 }
 

@@ -209,6 +209,7 @@ let currentQuestionArray;
 
 
 // START GAME FUNCTION //
+
 function startGame(difficulty) {
     // currentdiff = difficulty;
     currentQuestionIndex = 0;
@@ -232,6 +233,15 @@ function startGame(difficulty) {
     loadQuestion();
     console.log("Game started!");
 }
+
+document.getElementById("startBtn").addEventListener("click", function() {
+    document.getElementById("easyBtn").style.display = 'block';
+    document.getElementById("mediumBtn").style.display = 'block';
+    document.getElementById("hardBtn").style.display = 'block';
+    document.getElementById("expertBtn").style.display = 'block';
+
+    document.getElementById('startBtn').style.display = 'none'
+});
 
 const easyButton = document.getElementById('easyBtn');
 const mediumButton = document.getElementById('mediumBtn');
@@ -370,19 +380,25 @@ function showRanking(){
     document.getElementById("startOverBtn").style.display = "block";
 }
 
+document.getElementById("startOverBtn").addEventListener("click", startOver);
 // START OVER FUNCTION //
 function startOver() {
     currentQuestionIndex = 0;
     currentQuestion = null;
     correctAnswers = 0;
+    currentQuestionArray = null;
 
     document.getElementById("ranking").style.display = "none"
     document.getElementById("startOverBtn").style.display = "none"
-    document.getElementById("question").style.display = "block"
-    document.getElementById("options").style.display = "block"
-    document.getElementById("nextBtn").style.display = "block"
+    document.getElementById("question").style.display = "none"
+    document.getElementById("options").style.display = "none"
+    document.getElementById("nextBtn").style.display = "none"
 
-    loadQuestion();
+    easyButton.style.display = "block";
+    mediumButton.style.display = "block";
+    hardButton.style.display = "block";
+    expertButton.style.display = "block";
+    // loadQuestion();
 }
 
 
