@@ -1,6 +1,9 @@
 body {
-    background-color: yellow;
+    /* background-color: yellow; */
     font-family: 'Satisfy', cursive;
+    /* background-color: #0057b3; */
+    background-image: url("https://www.transparenttextures.com/patterns/wave-grid.png");
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
 h1 {
@@ -11,7 +14,7 @@ h1 {
 
 div {
     text-align: center;
-    border: 15px solid yellow;
+    border: 15px solid #;
 }
 
 p {

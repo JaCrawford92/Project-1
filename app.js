@@ -203,32 +203,33 @@ const expertQuestions = [
 ];
 
 let currentQuestionIndex = 0;
-let currentQuestion = [currentQuestionIndex];
+let currentQuestion = null;
 let correctAnswers = 0;
+let currentQuestionArray;
 
 
 // START GAME FUNCTION //
 function startGame(difficulty) {
+    // currentdiff = difficulty;
+    currentQuestionIndex = 0;
+    correctAnswers = 0;
+
     document.getElementById("startBtn").style.display = "none";
     document.getElementById("startOverBtn").style.display = "none";
-
     document.getElementById("question").style.display = "block"
     document.getElementById("options").style.display = "block"
     document.getElementById("nextBtn").style.display = "block"
 
-    let questions;
     if (difficulty === "easy"){
-        questions = easyQuestions;
+        currentQuestionArray = easyQuestions;
     } else if (difficulty === "medium") {
-        questions = mediumQuestions;
+        currentQuestionArray = mediumQuestions;
     } else if (difficulty === "hard") {
-        questions = hardQuestions;
+        currentQuestionArray = hardQuestions;
     } else if (difficulty === "expert") {
-        questions = expertQuestions;
+        currentQuestionArray = expertQuestions;
     }
-
-    loadQuestion(questions);
-
+    loadQuestion();
     console.log("Game started!");
 }
 
@@ -237,22 +238,22 @@ const mediumButton = document.getElementById('mediumBtn');
 const hardButton = document.getElementById('hardBtn');
 const expertButton = document.getElementById('expertBtn');
     
-    easyButton.addEventListener("click", function() {
-        startGame('easy');
-        hideDiffBtn();
-    });
-    mediumButton.addEventListener("click", function(){
-        startGame('medium');
-        hideDiffBtn();
-    });
-    hardButton.addEventListener("click", function(){
-        startGame('hard');
-        hideDiffBtn();
-    });
-    expertButton.addEventListener("click", function(){
-        startGame('expert');
-        hideDiffBtn();
-    });
+easyButton.addEventListener("click", function() {
+    startGame('easy');
+    hideDiffBtn();
+});
+mediumButton.addEventListener("click", function(){
+    startGame('medium');
+    hideDiffBtn();
+});
+hardButton.addEventListener("click", function(){
+    startGame('hard');
+    hideDiffBtn();
+});
+expertButton.addEventListener("click", function(){
+    startGame('expert');
+    hideDiffBtn();
+});
 
 function hideDiffBtn(){
     easyButton.style.display = "none";
@@ -261,33 +262,51 @@ function hideDiffBtn(){
     expertButton.style.display = "none";
 }
 
-
-
 document.getElementById("nextBtn").addEventListener("click", nextQuestion);
 
 
-
+// QUESTION LOADING FUNCTION //
 function loadQuestion(questions) {
+    if(currentQuestionIndex >= currentQuestionArray.length){
+        showRanking();
+        return;
+    }
+    currentQuestion = currentQuestionArray[currentQuestionIndex];
     const questionElement = document.getElementById("question");
     const optionsElement = document.getElementById("options");
 
     // let questions;
-    // if (difficulty === 'easy'){
+    // switch(currentdiff){
+    //     case 'easy': questions = easyQuestions; break;
+    //     case 'medium': questions = mediumQuestions; break;
+    //     case 'hard': questions = hardQuestions; break;
+    //     case 'expert': questions = expertQuestions; break;
+    // }
+    // let currentQuestion = currentQuestion[currentQuestionIndex];
+    // let questions;
+    // if (currentdiff === 'easy'){
     //     questions = easyQuestions;
-    // } else if (difficulty === 'medium'){
+    // } else if (currentdiff === 'medium'){
     //     questions = mediumQuestions
-    // } else if (difficulty === 'hard') {
+    // } else if (currentdiff === 'hard') {
     //     questions = hardQuestions;
-    // } else if (difficulty === 'expert') {
+    // } else if (currentdiff === 'expert') {
     //     questions = expertQuestions
     // }
+    // document.getElementById("question").textContent = currentQuestion.question;
     
     questionElement.textContent = currentQuestion.question;
+    // let optionContainer = document.getElementById("options");
     optionsElement.innerHTML = "";
 
-    if(questions) {
-        currentQuestion = questions[currentQuestionIndex];
-    }
+    // if (currentQuestionIndex < questions.length) {
+    //     currentQuestion = questions[currentQuestionIndex];
+    // } else {
+    //     showRanking();
+    // }
+    // if(questions) {
+    //     currentQuestion = questions[currentQuestionIndex];
+    // }
 
     currentQuestion.options.forEach((option, index) => {
         const button = document.createElement("button");
@@ -297,66 +316,68 @@ function loadQuestion(questions) {
     });
 }
 
+// ANSWER SELECTION FUNTION //
 function selectAnswer(optionIndex) {
     const selectedOption = currentQuestion.options[optionIndex];
     const correctAnswer = currentQuestion.answer;
-
     if (selectedOption === correctAnswer) {
+        correctAnswers++;
         alert("Correct! Well done mortal!");
     } else {
         alert(`Wrong mortal! The correct answer is: ${correctAnswer}`);
     }
-
     nextQuestion();
 }
 
+// NEXT QUESTION FUNCTIONS //
 function nextQuestion() {
     currentQuestionIndex++;
-    if (currentQuestionIndex === easyQuestions.length) {
-        currentQuestion = easyQuestions[currentQuestionIndex];
-        loadQuestion();
-    } else if (currentQuestionIndex === mediumQuestions.length) {
-        currentQuestion = mediumQuestions[currentQuestionIndex]
-        loadQuestion();  
-    } else if (currentQuestionIndex === hardQuestions.length) {
-        currentQuestion = hardQuestions[currentQuestionIndex]
-        loadQuestion(); 
-    } else if (currentQuestionIndex === expertQuestions.length) {
-        currentQuestion = expertQuestions[currentQuestionIndex]
-        loadQuestion();
-    } else {
-        showRanking();
-    }
+    // let currentQuestionArray;
+    // if (currentQuestionIndex < easyQuestions.length) {
+    //     currentQuestionArray = easyQuestions[currentQuestionIndex];
+    //     loadQuestion();
+    // } else if (currentQuestionIndex < mediumQuestions.length) {
+    //     currentQuestionArray = mediumQuestions[currentQuestionIndex]
+    //     loadQuestion();  
+    // } else if (currentQuestionIndex < hardQuestions.length) {
+    //     currentQuestionArray = hardQuestions[currentQuestionIndex]
+    //     loadQuestion(); 
+    // } else if (currentQuestionIndex < expertQuestions.length) {
+    //     currentQuestionArray = expertQuestions[currentQuestionIndex]
+    //     loadQuestion();
+    // } else {
+    //     showRanking();
+    //     return;
+    // }   
+    loadQuestion();
 }
 
-
+// RANKINGS AFTER ANSWERING THE QUESTIONS FUNCTIONS //
 function showRanking(){
     document.getElementById("question").style.display = "none";
     document.getElementById("options").style.display = "none";
     document.getElementById("nextBtn").style.display = "none";
-
     const rankingElement = document.getElementById("ranking");
-    if (correctAnswers === easyQuestions.length) {
-        rankingElement.textContent = "Perfect! You're a Greek";
-    } else if (correctAnswers >= easyQuestions.length / 2) {
+
+    if (correctAnswers === currentQuestionArray.length) {
+        rankingElement.textContent = "Perfect! You're a Greek God";
+    } else if (correctAnswers >= currentQuestionArray.length / 2) {
         rankingElement.textContent = "Good Job! You're a Demi-God";
     } else {
         rankingElement.textContent = "Keeping trying mortal";
     }
-
     rankingElement.style.display = "block";
     document.getElementById("startOverBtn").style.display = "block";
-
-    showRanking();
 }
 
+// START OVER FUNCTION //
 function startOver() {
     currentQuestionIndex = 0;
-    currentQuestion = [currentQuestionIndex];
+    currentQuestion = null;
     correctAnswers = 0;
+
     document.getElementById("ranking").style.display = "none"
     document.getElementById("startOverBtn").style.display = "none"
-
     document.getElementById("question").style.display = "block"
     document.getElementById("options").style.display = "block"
     document.getElementById("nextBtn").style.display = "block"
