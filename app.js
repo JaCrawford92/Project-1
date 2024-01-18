@@ -117,7 +117,7 @@ const mediumQuestions = [
 const hardQuestions = [
     {question: "The Golden Apple of Discord incited what war?",
     options: ['Peloponnesian War', 'Persian War', 'Trojan War', 'Battles of Marathon'],
-    answer: "Rhea"},
+    answer: "Trojan War"},
 
     {question: "Who fired the arrow that hit Achilles in the heel?",
     options: ['Thesus', 'Troy', 'Helen', 'Paris'],
@@ -332,9 +332,9 @@ function selectAnswer(optionIndex) {
     const correctAnswer = currentQuestion.answer;
     if (selectedOption === correctAnswer) {
         correctAnswers++;
-        alert("Correct! Well done mortal!");
-    } else {
-        alert(`Wrong mortal! The correct answer is: ${correctAnswer}`);
+        // alert("Correct! Well done mortal!");
+    // } else {
+        // alert(`Wrong mortal! The correct answer is: ${correctAnswer}`);
     }
     nextQuestion();
 }

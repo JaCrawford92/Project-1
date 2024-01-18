@@ -11,26 +11,28 @@
 <h1>A Game of Myths</h1>
 <img src="zeus Large.png" alt="zeus" class="center"/>
 <nav>
-<div>
-    <button id="startBtn" onclick="startGame()">Start Game</button>
-    <div id="buttonContainer">
-        <button id="easyBtn" onclick="startGame('easy')" style="display: none;">Easy</button>
-        <button id="mediumBtn"onclick="startGame('medium')" style="display: none;">Medium</button>
-        <button id="hardBtn"onclick="startGame('hard')" style="display: none;">Hard</button>
-        <button id="expertBtn"onclick="startGame('expert')" style="display: none;">Expert</button>
+<div class="body">
+    <div>
+        <button id="startBtn" onclick="startGame()">Start Game</button>
+        <div id="buttonContainer">
+            <button id="easyBtn" onclick="startGame('easy')" style="display: none;">Easy</button>
+            <button id="mediumBtn"onclick="startGame('medium')" style="display: none;">Medium</button>
+            <button id="hardBtn"onclick="startGame('hard')" style="display: none;">Hard</button>
+            <button id="expertBtn"onclick="startGame('expert')" style="display: none;">Expert</button>
+        </div>
+    <p id="question"></p>
+    <div id="options"></div>
+    <button id="nextBtn" style="display: none;">Next Question</button>
+    <br>
+    <button id="startOverBtn" onclick="startOver()" style="display: none;">Start Over</button>
+    <p id="ranking"></p>
     </div>
-<p id="question"></p>
-<div id="options"></div>
-<button id="nextBtn" style="display: none;">Next Question</button>
-<br>
-<button id="startOverBtn" onclick="startOver()" style="display: none;">Start Over</button>
-<p id="ranking"></p>
+    <div class='clouds'>
+        <div class='clouds-1'></div>
+        <div class='clouds-2'></div>
+        <div class='clouds-3'></div>
+    </div>
 </div>
-<div class='clouds'>
-    <div class='clouds-1'></div>
-    <div class='clouds-2'></div>
-    <div class='clouds-3'></div>
-  </div>
 </nav>
 <script src="app.js"></script>
 </body>
