@@ -1,6 +1,7 @@
-# Project-1 Trivia Game 
+<h1 align="center">The Game of Myths</h1>
 
-Images (zeus on a thron 5b6d9cbf-823f-47ad-bdb2-7e0943acd37c.png)
+Name of Game (The Game of Myths)
 
-The Game of Myths
+Description
+This is a Trivia Game that focus on Greek Mythology and you are able to 
 
