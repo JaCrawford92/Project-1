@@ -161,45 +161,45 @@ const hardQuestions = [
 ];
 
 const expertQuestions = [
-    {question: "Who's the mother of Zeus, Hades, Posidon?",
-    options: ['Gaia', 'Rhea', 'Oceanus', 'Mnemosyne'],
-    answer: "Rhea"},
+    {question: "In Greek mythology, who was cursed to stand in a pool of water with low branches, and whenever he reached for the fruit, the branches raised his intended meal from his grasp. Whenever he bent down to get a drink, the water receded before he got any?",
+    options: ['Tantalus', 'Pelops', 'Niobe', 'Broteas'],
+    answer: "Tantalus"},
 
-    {question: "Who's the mother of Zeus, Hades, Posidon?",
-    options: ['Gaia', 'Rhea', 'Oceanus', 'Mnemosyne'],
-    answer: "Rhea"},
+    {question: "In what year BC did the famous Battle of Marathon occur?",
+    options: ['460', '490', '360', '390'],
+    answer: "490"},
 
-    {question: "Who's the mother of Zeus, Hades, Posidon?",
-    options: ['Gaia', 'Rhea', 'Oceanus', 'Mnemosyne'],
-    answer: "Rhea"},
+    {question: "Women of Lemnos did what to men?",
+    options: ['Tricked Them', 'Trapped Them', 'Seduced Them', 'Murder Them'],
+    answer: "Them"},
 
-    {question: "Who's the mother of Zeus, Hades, Posidon?",
-    options: ['Gaia', 'Rhea', 'Oceanus', 'Mnemosyne'],
-    answer: "Rhea"},
+    {question: "Which river in Hades is known as the river of forgetfulness?",
+    options: ['Styx', 'Lethe', 'Acheron', 'Phlegethon'],
+    answer: "Lethe"},
 
-    {question: "Who's the mother of Zeus, Hades, Posidon?",
-    options: ['Gaia', 'Rhea', 'Oceanus', 'Mnemosyne'],
-    answer: "Rhea"},
+    {question: "Who was NOT one of the Muses?",
+    options: ['Clio', 'Thalia', 'Semele', 'Tersichore'],
+    answer: "Semele"},
 
-    {question: "Who's the mother of Zeus, Hades, Posidon?",
-    options: ['Gaia', 'Rhea', 'Oceanus', 'Mnemosyne'],
-    answer: "Rhea"},
+    {question: "Who was the only mortal woman to become an immortal god without dying first?",
+    options: ['Ariadne', 'Semele', 'Psyche', 'Lo'],
+    answer: "Psyche"},
 
-    {question: "Who's the mother of Zeus, Hades, Posidon?",
-    options: ['Gaia', 'Rhea', 'Oceanus', 'Mnemosyne'],
-    answer: "Rhea"},
+    {question: "Which creature's spine did Athena use to create the first flute?",
+    options: ['A dragon', 'A deer', 'A satyr', 'A snake'],
+    answer: "A snake"},
 
-    {question: "Who's the mother of Zeus, Hades, Posidon?",
-    options: ['Gaia', 'Rhea', 'Oceanus', 'Mnemosyne'],
-    answer: "Rhea"},
+    {question: "What was the name of the nymph who was turned into a laurel tree as she fled from Apollo?",
+    options: ['Daphne', 'Echo', 'Syrinx', 'Calypso'],
+    answer: "Daphne"},
 
-    {question: "Who's the mother of Zeus, Hades, Posidon?",
-    options: ['Gaia', 'Rhea', 'Oceanus', 'Mnemosyne'],
-    answer: "Rhea"},
+    {question: "In what form did Zeus appear to Leda?",
+    options: ['Bull', 'Swan', 'Golden Shower', 'Eagle'],
+    answer: "Swan"},
 
-    {question: "Who's the mother of Zeus, Hades, Posidon?",
-    options: ['Gaia', 'Rhea', 'Oceanus', 'Mnemosyne'],
-    answer: "Rhea"}
+    {question: "What was the name of the giant who attempted to storm Mount Olympus during the Gigantomachy?",
+    options: ['Typhon', 'Enceladus', 'Polybotes', 'Alcyoneus'],
+    answer: "Alcyoneus"}
 ];
 
 let currentQuestionIndex = 0;
