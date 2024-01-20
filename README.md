@@ -32,8 +32,8 @@ All that's needed is to click the "Start Game" and then click a difficulty level
 ## Next Steps
 - Adding categories for different mythologies
 - Adding hints for "Hard" and "Expert"
-- Make fill in the blank questions.
-- Adding multiple animation depending on the category that is chosen.
+- Make fill-in-the-blank questions.
+- Adding multiple animations depending on the category that is chosen.
 - Possibly add sound effects
 
 ## References Links
