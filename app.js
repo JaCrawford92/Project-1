@@ -321,6 +321,7 @@ function loadQuestion(questions) {
     currentQuestion.options.forEach((option, index) => {
         const button = document.createElement("button");
         button.textContent = option;
+        button.classList.add("answer-button");
         button.onclick = () => selectAnswer(index);
         optionsElement.appendChild(button);
     });
