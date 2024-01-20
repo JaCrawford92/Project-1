@@ -38,3 +38,4 @@ All that's needed is to click the "Start Game" and then click a difficulty level
 - https://www.javatpoint.com/
 - https://fonts.google.com/specimen/Satisfy
 - https://herewecode.io/blog/create-button-javascript/
+- https://stackoverflow.com/
