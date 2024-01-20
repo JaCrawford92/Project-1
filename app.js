@@ -211,7 +211,6 @@ let currentQuestionArray;
 // START GAME FUNCTION //
 
 function startGame(difficulty) {
-    // currentdiff = difficulty;
     currentQuestionIndex = 0;
     correctAnswers = 0;
 
@@ -284,39 +283,10 @@ function loadQuestion(questions) {
     currentQuestion = currentQuestionArray[currentQuestionIndex];
     const questionElement = document.getElementById("question");
     const optionsElement = document.getElementById("options");
-
-    // let questions;
-    // switch(currentdiff){
-    //     case 'easy': questions = easyQuestions; break;
-    //     case 'medium': questions = mediumQuestions; break;
-    //     case 'hard': questions = hardQuestions; break;
-    //     case 'expert': questions = expertQuestions; break;
-    // }
-    // let currentQuestion = currentQuestion[currentQuestionIndex];
-    // let questions;
-    // if (currentdiff === 'easy'){
-    //     questions = easyQuestions;
-    // } else if (currentdiff === 'medium'){
-    //     questions = mediumQuestions
-    // } else if (currentdiff === 'hard') {
-    //     questions = hardQuestions;
-    // } else if (currentdiff === 'expert') {
-    //     questions = expertQuestions
-    // }
-    // document.getElementById("question").textContent = currentQuestion.question;
     
     questionElement.textContent = currentQuestion.question;
     // let optionContainer = document.getElementById("options");
     optionsElement.innerHTML = "";
-
-    // if (currentQuestionIndex < questions.length) {
-    //     currentQuestion = questions[currentQuestionIndex];
-    // } else {
-    //     showRanking();
-    // }
-    // if(questions) {
-    //     currentQuestion = questions[currentQuestionIndex];
-    // }
 
     currentQuestion.options.forEach((option, index) => {
         const button = document.createElement("button");
@@ -325,41 +295,44 @@ function loadQuestion(questions) {
         button.onclick = () => selectAnswer(index);
         optionsElement.appendChild(button);
     });
+
 }
 
 // ANSWER SELECTION FUNTION //
 function selectAnswer(optionIndex) {
     const selectedOption = currentQuestion.options[optionIndex];
     const correctAnswer = currentQuestion.answer;
+    const feedbackElement = document.getElementById('feedback');
+
     if (selectedOption === correctAnswer) {
         correctAnswers++;
+        feedbackElement.textContent = 'Correct! Well done mortal!';
+        feedbackElement.style.color = 'white';
         // alert("Correct! Well done mortal!");
-    // } else {
+    } else {
+        feedbackElement.textContent = `Incorrect! The correct answer is ${correctAnswer}`;
+        feedbackElement.style.color = 'red';
         // alert(`Wrong mortal! The correct answer is: ${correctAnswer}`);
     }
-    nextQuestion();
+
+    const button = document.querySelectorAll("#options button");
+    button.forEach(button => {
+        button.disabled = true;
+    });
+    
+    setTimeout(() => {
+        feedbackElement.textContent = '';
+        nextQuestion();
+        button.forEach(button => {
+            button.disabled = false;
+        });
+    }, 2000);
+    // nextQuestion();
 }
 
 // NEXT QUESTION FUNCTIONS //
 function nextQuestion() {
-    currentQuestionIndex++;
-    // let currentQuestionArray;
-    // if (currentQuestionIndex < easyQuestions.length) {
-    //     currentQuestionArray = easyQuestions[currentQuestionIndex];
-    //     loadQuestion();
-    // } else if (currentQuestionIndex < mediumQuestions.length) {
-    //     currentQuestionArray = mediumQuestions[currentQuestionIndex]
-    //     loadQuestion();  
-    // } else if (currentQuestionIndex < hardQuestions.length) {
-    //     currentQuestionArray = hardQuestions[currentQuestionIndex]
-    //     loadQuestion(); 
-    // } else if (currentQuestionIndex < expertQuestions.length) {
-    //     currentQuestionArray = expertQuestions[currentQuestionIndex]
-    //     loadQuestion();
-    // } else {
-    //     showRanking();
-    //     return;
-    // }   
+    currentQuestionIndex++; 
     loadQuestion();
 }
 
@@ -381,6 +354,18 @@ function showRanking(){
     document.getElementById("startOverBtn").style.display = "block";
 }
 
+// function showEndOfQuiz() {
+//     // Hide the question and options elements
+//     document.getElementById("question").style.display = "none";
+//     document.getElementById("options").style.display = "none";
+
+//     // Display the results
+//     const resultsElement = document.getElementById("quizResults");
+//     resultsElement.innerHTML = `You got ${correctAnswers} out of ${currentQuestionsArray.length} correct!`;
+//     resultsElement.style.display = "block";
+// }
+
+
 document.getElementById("startOverBtn").addEventListener("click", startOver);
 // START OVER FUNCTION //
 function startOver() {
@@ -401,202 +386,5 @@ function startOver() {
     expertButton.style.display = "block";
     // loadQuestion();
 }
-
-
-// let currentQuestionIndex = 0;
-// let currentDiffcultyLevel = "easy";
-
-// function startGame(difficutyLevel) {
-//     currentDiffcultyLevel = difficutyLevel;
-
-//     const startBtn = document.getElementById("startBtn")
-//     const nextBtn = document.getElementById("nextBtn");
-//     startBtn.style.display = "none";
-//     nextBtn.style.display = "inline";
-
-//     displayQuestion();
-
-// }
-
-// function displayQuestion() {
-//     const questionElement = document.getElementById("question");
-//     const optionsElement = document.getElementById("options");
-
-//     questionElement.textContent = mythQuestions[currentDiffcultyLevel][currentQuestionIndex].question;
-
-//     optionsElement.innerHTML = "";
-//     mythQuestions[currentDiffcultyLevel][currentQuestionIndex].options.forEacb((option, index) => {
-//         const button = document.createElement("button");
-//         button.textContent = option;
-//         button.addEventListener("click", () => checkAnswer(index));
-//         optionsElement.appendChild(button);
-//     })  
-// };
-
-
-
-
-// // const startBtn = document.getElementById('startBtn');
-// // const difficultyButtons = document.querySelectorAll('.difficultyBtn');
-// // const questionContainer = document.getElementById('questionContainer');
-// // const questionDisplay = document.getElementById('question');
-// // const optionsContainer = document.getElementById('options');
-// // const nextBtn = document.getElementById('nextBtn');
-// // const submitButton = document.getElementById('submit')
-
-// function onButtonClick() {
-//     // alert('Button clicked')
-//     const button = document.querySelector('startBtn');
-//     button.addEventListener('click', onButtonClick); 
-// }
-
-// document.querySelectorAll('allBtn').forEach(a=>a.addEventListener('click',function(){
-//     this.parentNode.removeChild(this)
-//   }));
-
-// // let difficulty;
-// // let score = 0;
-
-// document.getElementById("startBtn").addEventListener("click", function() {
-//     document.getElementById("difficultySelection").style.display = "block";
-// });
-
-// document.getElementsByClassName("difficultySelection").addEventListener('click', function() {
-//     document.getElementById("difficultyBtn").style.display = "block";
-// });
-
-// function buildQuiz(){
-//     const output = [];
-
-//     easyQuestions.forEach(currentQuestion, questionNumber) => {
-
-//     }
-// }
-
-// function showQuestions (){
-//     difficulty = difficultyButtons.values;
-// }
-
-// function showResults (){
-
-// }
-
-// buildQuiz()
-
-// submitButton.addEventListener('click', showResults)
-
-// function startGame () {
-
-// }
-
-// function selectionOption(){
-
-// }
-
-// function nextQuestion (){
-
-// }
-
-// function checkAnswer () {
-
-// }
-
-// function showResults (){
-
-// }
-
-// function easyQ (){
-//     for (let i = 0; i < easyQuestions.length; i++) {
-        
-//     }
-// }
-
-
-
-
-
-
-
-// const button = document.querySelector('button');
-// button.addEventListener('click', onButtonClick);
-
-// const combineArray = [...easyQuestions, ...mediumQuestions, ...hardQuestions, ...expertQuestions]
-// const startBtn = document.getElementById('startBtn');
-// const difficultyButtons = document.querySelectorAll('.difficultyBtn');
-// const questionContainer = document.getElementById('questionContainer');
-// const questionDisplay = document.getElementById('question');
-// const optionsContainer = document.getElementById('options');
-// const nextBtn = document.getElementById('nextBtn');
-
-
-// let questionChosen = []
-// let difficultySelected = null;
-
-// let chosenQuestions = [];
-// let currentQuestionIndex = -1;
-// let selectedDifficulty = null;
-// let questions = 0;
-
-// document.getElementById("startBtn").addEventListener("click", function() {
-//     document.getElementById("difficultySelection").style.display = "block";
-// });
-
-
-
-
-// startBtn.addEventListener('click', (difficultyButtons) => {
-//     document.getElementById('difficultySelection').style.display = 'block';
-// });
-
-// function setDifficulty(difficulty) {
-//     selectedDifficulty = difficulty;
-//     switch (selectedDifficulty) {
-//       case 'easy':
-//         questions = easyQuestions;
-//         break;
-//       case 'medium':
-//         questions = mediumQuestions;
-//         break;
-//       case 'hard':
-//         questions = hardQuestions;
-//         break;
-//       default:
-//         break;
-//     }
-//     startGame();
-  
-
-//   function startGame() {
-//     currentQuestion = 0;
-//     displayQuestions();
-//     resultElement.textContent = '';
-//     nextBtn.style.display = 'none';
-//   }
-// }
-
-// // difficultyButtons.forEach(button => {
-// //     button.addEventListener('click', () => {
-// //         const selectedDifficulty = button.getAttribute('data-difficulty');
-// //         if (selectedDifficulty === 'easy') {
-// //             chosenQuestions = easyQuestions;
-// //         } else if (selectedDifficulty === 'medium') {
-// //             chosenQuestions = mediumQuestions;
-// //         } else if (selectedDifficulty === 'hard') {
-// //             chosenQuestions = hardQuestions;
-// //         } else if (selectedDifficulty === 'expert') {
-// //             chosenQuestions === expertQuestions;
-// //         }
-// //         startGame();
-// //     });
-// // });
-
-// function startGame(){
-//     // document.getElementById('difficultySelection').style.display = 'none';
-//     // document.getElementById('questionContainer').style.display = 'block';
-//     currentQuestionIndex = Math.floor(Math.random() * chosenQuestions.length);
-//     randomAnswers = Math
-//     displayQuestion();
-// };
-
 
 

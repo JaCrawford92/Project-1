@@ -17,6 +17,14 @@ body {
     height: 10vh;
 }
 
+#feedback {
+    position: relative;
+    margin-top: 36px;
+    font-size: 20px;
+    font-weight: bold;
+    color: grey;
+}
+
 .answer-button {
   margin: auto;
   display: flex-row;
@@ -168,7 +176,7 @@ p {
 }
 
 #nextBtn {
-  margin: 70px auto;
+  margin: 50px auto;
   display: block;
   justify-content: center;
   align-items: center;
