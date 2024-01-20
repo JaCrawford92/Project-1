@@ -16,6 +16,7 @@ This Trivia Game focuses on Greek Mythology, and you can choose between 4 diffic
 
 ## Get Started
 https://jacrawford92.github.io/Project-1/
+All that's needed is to click the "Start Game" and then click a difficulty level. That will bring up the questions.
 
 ## Built with
 - HTML
