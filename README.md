@@ -17,6 +17,7 @@ Are you ready to test your might? This Trivia Game focuses on Mythology, and you
 
 ## Get Started
 https://jacrawford92.github.io/Project-1/
+
 All that's needed is to click the "Start Game" and then click a difficulty level. That will bring up the questions.
 
 ## Built with
