@@ -59,7 +59,7 @@ h1 {
 
 div {
     text-align: center;
-    border: 15px solid #;
+    border: none;
 }
 
 p {
@@ -67,7 +67,7 @@ p {
 }
 
 #startBtn {
-  margin: 50px;  
+  margin: 60px;  
   position: relative;  
   align-items: center;
   padding: 6px 14px;
@@ -85,6 +85,19 @@ p {
 }
 
 #startBtn:hover {
+    background-color: #a09437;
+}
+
+#easyBtn:hover {
+    background-color: #a09437;
+}
+#mediumBtn:hover {
+    background-color: #a09437;
+}
+#hardBtn:hover {
+    background-color: #a09437;
+}
+#expertBtn:hover {
     background-color: #a09437;
 }
 
@@ -156,7 +169,6 @@ p {
 
 #nextBtn {
   margin: 70px auto;
-  /* position: relative; */
   display: block;
   justify-content: center;
   align-items: center;
