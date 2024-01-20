@@ -1,9 +1,10 @@
 <h1 align="center">The Game of Myths</h1>
 
-Name of Game (The Game of Myths)
+## Name of Game 
+<h3>(The Game of Myths)</h3>
 
 ## Description
-This Trivia Game focuses on Greek Mythology, and you can choose between 4 difficulties after clicking "start game". After going through the game you will be given a rank and the option to start the game over.
+Are you ready to test your might? This Trivia Game focuses on Mythology, and you can choose between 4 difficulties after clicking "start game". After going through the game you will be told how well you did and then given the option to start the game over.
 
 ## ScreenShots
 <img width="1679" alt="image" src="https://github.com/JaCrawford92/Project-1/assets/149886160/378c8a3b-fdfd-422d-a3bf-c438a59bd19b">

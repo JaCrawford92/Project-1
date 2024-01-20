@@ -4,7 +4,6 @@
 }
 
 body {
-    /* background-color: yellow; */
     font-family: 'Satisfy', cursive;
     background-color: #0057b3;
     background-image: url("https://www.transparenttextures.com/patterns/wave-grid.png");
@@ -230,6 +229,7 @@ img {
     width: auto;
 }
 
+/* Cloud Animation and Design */
 @keyframes clouds-loop-1 {
   to {
     background-position: -1000px 0;
