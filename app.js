@@ -209,7 +209,6 @@ let currentQuestionArray;
 
 
 // START GAME FUNCTION //
-
 function startGame(difficulty) {
     currentQuestionIndex = 0;
     correctAnswers = 0;
@@ -233,6 +232,7 @@ function startGame(difficulty) {
     console.log("Game started!");
 }
 
+// EVENT LISTENER TO MAKE SURE THE DIFFICULTY BUTTONS APPEAR AFTER CLICKING START GAME //
 document.getElementById("startBtn").addEventListener("click", function() {
     document.getElementById("easyBtn").style.display = 'block';
     document.getElementById("mediumBtn").style.display = 'block';
@@ -242,6 +242,7 @@ document.getElementById("startBtn").addEventListener("click", function() {
     document.getElementById('startBtn').style.display = 'none'
 });
 
+// EVENT LISTENER FOR DIFFICULTY //
 const easyButton = document.getElementById('easyBtn');
 const mediumButton = document.getElementById('mediumBtn');
 const hardButton = document.getElementById('hardBtn');
@@ -285,7 +286,6 @@ function loadQuestion(questions) {
     const optionsElement = document.getElementById("options");
     
     questionElement.textContent = currentQuestion.question;
-    // let optionContainer = document.getElementById("options");
     optionsElement.innerHTML = "";
 
     currentQuestion.options.forEach((option, index) => {
@@ -303,7 +303,8 @@ function selectAnswer(optionIndex) {
     const selectedOption = currentQuestion.options[optionIndex];
     const correctAnswer = currentQuestion.answer;
     const feedbackElement = document.getElementById('feedback');
-
+    
+    // THE CONDITIONAL TO LET YOU KNOW IF YOUR ANSWER IS CORRECT OR NOT //
     if (selectedOption === correctAnswer) {
         correctAnswers++;
         feedbackElement.textContent = 'Correct! Well done mortal!';
@@ -343,6 +344,7 @@ function showRanking(){
     document.getElementById("nextBtn").style.display = "none";
     const rankingElement = document.getElementById("ranking");
 
+    // THIS LETS YOU KNOW IF HOW WILL YOU DID ON THE TRIVIA //
     if (correctAnswers === currentQuestionArray.length) {
         rankingElement.textContent = "Perfect! You're a Greek God";
     } else if (correctAnswers >= currentQuestionArray.length / 2) {
@@ -354,19 +356,8 @@ function showRanking(){
     document.getElementById("startOverBtn").style.display = "block";
 }
 
-// function showEndOfQuiz() {
-//     // Hide the question and options elements
-//     document.getElementById("question").style.display = "none";
-//     document.getElementById("options").style.display = "none";
-
-//     // Display the results
-//     const resultsElement = document.getElementById("quizResults");
-//     resultsElement.innerHTML = `You got ${correctAnswers} out of ${currentQuestionsArray.length} correct!`;
-//     resultsElement.style.display = "block";
-// }
-
-
 document.getElementById("startOverBtn").addEventListener("click", startOver);
+
 // START OVER FUNCTION //
 function startOver() {
     currentQuestionIndex = 0;
