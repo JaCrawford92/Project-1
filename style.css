@@ -18,7 +18,9 @@ body {
 }
 
 .answer-button {
-  float;
+  margin: auto;
+  display: flex-row;
+  justify-content: center;
   align-items: center;
   padding: 6px 14px;
   font-family: 'Satisfy', cursive;
@@ -40,6 +42,7 @@ body {
 
 
 #options {
+    position: absolute;
     margin: auto;
     position: sticky;
     color: red;
@@ -142,7 +145,10 @@ p {
 }
 
 #nextBtn {
-  /* margin: auto; */
+  margin: 70px auto;
+  /* position: relative; */
+  display: block;
+  justify-content: center;
   align-items: center;
   padding: 6px 14px;
   font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
