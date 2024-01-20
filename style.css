@@ -31,7 +31,8 @@ body {
   justify-content: center;
   align-items: center;
   padding: 6px 14px;
-  font-family: 'Satisfy', cursive;
+  font-size: 15px;
+  font-family:'Satisfy', cursive;
   border-radius: 6px;
   border: none;
   background: #6E6D70;
@@ -181,7 +182,7 @@ p {
   justify-content: center;
   align-items: center;
   padding: 6px 14px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+  font-family:'Satisfy', cursive;
   border-radius: 6px;
   border: none;
   background: #6E6D70;
