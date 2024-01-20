@@ -73,7 +73,7 @@ const mediumQuestions = [
     options: ['Hermes', 'Athena', 'Apollo', 'Aphrodite'],
     answer: "Apollo"},
 
-    {question: "How many labors did Hercules have to take? 12",
+    {question: "How many labors did Hercules have to take?",
     options: ['15', '11', '12', '13'],
     answer: "12"},
 
@@ -103,7 +103,7 @@ const mediumQuestions = [
 
     {question: "How many Titans were there?",
     options: ['15', '11', '12', '13'],
-    answer: "Hydra"},
+    answer: "12"},
 
     {question: "Who killed their family in a fit of maddness?",
     options: ['Hercules', 'Zeus', 'Troy', 'Helen'],
