@@ -67,6 +67,8 @@ p {
 }
 
 #startBtn {
+  margin: 50px;  
+  position: relative;  
   align-items: center;
   padding: 6px 14px;
   font-family: 'Satisfy', cursive;
@@ -82,7 +84,12 @@ p {
   outline: 0; 
 }
 
+#startBtn:hover {
+    background-color: #a09437;
+}
+
 #easyBtn {
+  margin-top: auto;  
   align-items: center;
   padding: 6px 14px;
   font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
@@ -99,6 +106,7 @@ p {
     
 }
 #mediumBtn {
+    margin-top: auto;  
     align-items: center;
     padding: 6px 14px;
     font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
@@ -114,6 +122,7 @@ p {
     outline: 0; 
 }
 #hardBtn {
+    margin-top: auto;  
     align-items: center;
     padding: 6px 14px;
     font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
@@ -129,6 +138,7 @@ p {
     outline: 0;   
 }
 #expertBtn {
+    margin-top: auto;  
     align-items: center;
     padding: 6px 14px;
     font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
@@ -164,6 +174,10 @@ p {
   outline: 0; 
 }
 
+#nextBtn:hover {
+    background-color: #a09437;
+}
+
 #startOverBtn {
   margin: auto;
   align-items: center;
@@ -181,12 +195,17 @@ p {
   outline: 0; 
 }
 
+#startOverBtn:hover {
+    background-color: #a09437;
+}
+
 img {
     display: flex;
     border-radius: 50%;
     height: 50%;
     margin-right: auto;
     margin-left: auto;
+    margin-bottom: -50px;
     width: auto;
 }
 
