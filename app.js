@@ -171,7 +171,7 @@ const expertQuestions = [
 
     {question: "Women of Lemnos did what to men?",
     options: ['Tricked Them', 'Trapped Them', 'Seduced Them', 'Murder Them'],
-    answer: "Them"},
+    answer: "Murder Them"},
 
     {question: "Which river in Hades is known as the river of forgetfulness?",
     options: ['Styx', 'Lethe', 'Acheron', 'Phlegethon'],
